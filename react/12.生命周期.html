@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel"> //通过babel转义 写Jsx语法
+     class Foo2 extends React.Component{
+        constructor(props){
+            super(props)
+            console.log("child-constructor");
+            this.state={
+                sum:0
+            }
+        }
+        componentDidMount(){
+            console.log("child-componentDidMount");
+            
+        }
+        componentDidUpdate(prevProps,prevState){
+            console.log(prevProps,prevState);
+            
+            console.log("child-componentDidUpdate");
+
+        }
+        componentWillUnmount(){
+            console.log("componentWillUnmount");
+        }
+          render() {
+            console.log("child-render")
+            return(
+               
+                <h1>{this.props.num}</h1>
+            )
+          }
+            
+        }
+    class Foo extends React.Component{
+        constructor(props){
+            super(props)
+            this.state={
+                count:0
+            }
+            console.log("constructor");
+            
+        }
+        add(){
+            this.setState({
+                count:++this.state.count
+            })
+        }
+        componentDidMount(){
+            console.log("componentDidMount");
+            
+        }
+        componentDidUpdate(){
+            console.log("componentDidUpdate");
+
+        }
+       
+        render() {
+            console.log("render");
+            let obj = <Foo2 num={this.state.count}/>
+            if(this.state.count>=5){
+                obj = null;
+            }
+            return(
+                <div>
+                    {obj}
+                    <button onClick={this.add.bind(this)}>add</button>
+                </div>
+            )
+        }
+
+    }
+    ReactDOM.render(
+        <Foo/>,
+        document.getElementById("root")
+    )
+    
+    </script>
+    
+</body>
+</html>

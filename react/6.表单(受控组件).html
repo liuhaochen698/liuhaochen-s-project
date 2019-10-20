@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Foo extends React.Component{ //声明有状态组件
+            constructor(props){ //构造函数
+                super(props) //继承属性
+                this.state = {  //状态值 无状态组件无状态值
+                    str : "",
+                    isChecked:true
+                }
+            }
+            change(e){ //实现双向绑定
+                // console.log(e.target.value)
+                this.setState({
+                    str:e.target.value
+                })
+            }
+            cheChange(e){
+                console.log(e.target.checked);
+                
+            }
+            render() {
+                return(
+                    <div>
+                        <input name="username" onChange={this.change.bind(this)} type="text"/>
+                        <input type="checkbox" name="che" value="che1" onChange={this.cheChange.bind(this)} checked={this.state.isChecked} />
+                        <h1>{this.state.str}</h1>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+           <Foo/>, 
+           document.getElementById("root")
+
+        )
+    </script>
+</body>
+</html>

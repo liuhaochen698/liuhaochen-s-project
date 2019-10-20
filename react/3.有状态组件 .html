@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Foo extends React.Component{ //声明有状态组件
+            constructor(props){ //构造函数
+                super(props) //继承属性
+                this.state = {  //状态值 无状态组件无状态值
+                    str : "liuhaochen"
+                }
+            }
+            render() {
+                return(
+                    <div>
+                        <h1>有状态组件</h1>    
+                        <h1>hello {this.state.str}</h1>
+                        <h1>hello {this.props.msg}</h1>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+           <Foo msg="liu"/>, 
+           document.getElementById("root")
+
+        )
+    </script>
+</body>
+</html>

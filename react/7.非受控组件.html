@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+        class Foo extends React.Component{ //声明有状态组件
+            constructor(props){ //构造函数
+                super(props) //继承属性
+                this.state = {  //状态值 无状态组件无状态值
+                   
+                }
+                this.inp2 = React.createRef()
+            }
+            submitHandle(e){
+                
+                e.preventDefault();
+                console.log(this.inp2);
+                
+            }
+            render() {
+                return(
+                    <div>
+                        <form onSubmit={this.submitHandle.bind(this)}>
+                        <input name="inp1" ref={this.inp1} type="text"/>
+                        <input name="inp2" ref={this.inp2} type="text"/>
+                        <input name="inp3" ref={this.inp3} type="text"/>
+                        <input name="inp4" ref={this.inp4} type="text"/>
+                        <button type="submit">submit</button>
+                        
+                        </form>
+                    </div>
+                )
+            }
+        }
+
+        ReactDOM.render(
+           <Foo/>, 
+           document.getElementById("root")
+
+        )
+    </script>
+</body>
+</html>

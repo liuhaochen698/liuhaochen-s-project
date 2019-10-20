@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+      class General extends React.Component{
+          constructor(props){
+              super(props)
+          }
+          addHandle(){
+            this.props.jSoilder(this.props.name)
+          }
+          render() {
+              return(
+                  <div>
+                    <h2>将军{this.props.name}有{this.props.getSoilder}万个士兵</h2>
+                    <button onClick={this.addHandle.bind(this)}>调兵</button>
+                  </div>
+              )
+          }
+      }
+      class King extends React.Component{
+          constructor(props){
+              super(props)
+              this.state = {
+                soilder:100,
+                GeneralA:100,
+                GeneralB:100
+             }
+          }
+          changeSoilder(name){
+              if(this.state.soilder>0) {
+                let KingSoilder = this.state.soilder;
+                let generalA = this.state.GeneralA;
+                let generalB = this.state.GeneralB;
+                KingSoilder -=10
+                if(name =="A"){
+                  generalA += 10
+                }
+                else{
+                  generalB +=10
+                }
+              this.setState({
+                  soilder:KingSoilder,
+                  GeneralA:generalA,
+                  GeneralB:generalB
+              })
+           }
+        }
+              
+          render() {
+              return(
+                  <div>
+                    <h1>国王有{this.state.soilder}万个士兵</h1>
+                    <General jSoilder={this.changeSoilder.bind(this)}  getSoilder={this.state.GeneralA} name="A"/>  
+                    <General jSoilder={this.changeSoilder.bind(this)}  getSoilder={this.state.GeneralB} name="B"/>  
+                  </div>
+              )
+          }
+      }
+
+
+      ReactDOM.render(
+        <King/>,
+        document.getElementById("root")
+      )
+    </script>
+</body>
+</html>

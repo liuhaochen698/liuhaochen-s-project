@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+    <script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel">
+    class Todotable extends React.Component{
+        constructor(props){
+            super(props)
+        }
+        render(){
+            return(
+                <div>
+                    <table className="table">
+                    <thead className="thead-dark">
+                        <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">First</th>
+                        <th scope="col">Last</th>
+                        <th scope="col">Handle</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                        <th scope="row">1</th>
+                        <td>Mark</td>
+                        <td>Otto</td>
+                        <td>@mdo</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">2</th>
+                        <td>Jacob</td>
+                        <td>Thornton</td>
+                        <td>@fat</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">3</th>
+                        <td>Larry</td>
+                        <td>the Bird</td>
+                        <td>@twitter</td>
+                        </tr>
+                    </tbody>
+                    </table>    
+                </div>
+            )
+        }
+    }
+    class TotalForm extends React.Component{
+        constructor(props){
+            super(props)
+        }
+        render(){
+            return(
+                <div>
+                     <form className="form-inline">
+                        <div className="form-group mb-2">
+                    <label for="staticEmail2" className="sr-only">Email</label>
+                        <input type="text" readonly className="form-control-plaintext" id="staticEmail2" value="email@example.com"/>
+                    </div>
+                    <div className="form-group mx-sm-3 mb-2">
+                        <label for="inputPassword2" className="sr-only">Password</label>
+                        <input type="password" className="form-control" id="inputPassword2" placeholder="Password"/>
+                    </div>
+                     <button type="submit" className="btn btn-primary mb-2">Confirm identity</button>
+                    </form>
+                </div>
+            )
+        }
+    }
+    class TotalList extends React.Component{
+        constructor(props){
+            super(props)
+        }
+        render(){
+            return(
+                <TotalForm/>,
+                <Todotable/>
+            )
+        }
+    }
+    ReactDOM.render(
+        <TotalList/>,
+        document.getElementById("root")
+    )
+    </script>
+</body>
+</html>
